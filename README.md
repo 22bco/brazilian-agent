@@ -7,7 +7,7 @@
 
 ## Why this challenge
 
-Dip Your Trip is an AI-native adventure travel agency in South America. Many of our travelers reach us on WhatsApp, in Portuguese, often not yet knowing exactly what they want. We want to see how you'd build the first version of an agent that meets one of those travelers and actually helps — grounded in our real trips, speaking natural Brazilian Portuguese, and knowing when to bring a human in.
+Dip Your Trip is an AI-native Services Company, working as AI-run travel agency. Many of our travelers reach us on WhatsApp, in Portuguese, often not yet knowing exactly what they want. We want to see how you'd build the first version of an agent that meets one of those travelers and actually helps — grounded in our real trips, speaking natural Brazilian Portuguese, and knowing when to bring a human in.
 
 This is deliberately open. We care less about checking boxes and more about how you think: how you ground an LLM in real data, how you design a conversation someone would enjoy on WhatsApp, and what tradeoffs you make under ambiguity.
 
@@ -21,7 +21,7 @@ In `data/trips.csv` you'll find 5 real DYT itineraries — Atacama, a Chile + Ar
 
 A few honest things about it:
 
-- It's real operational data, so it's a little messy. The `detail` text mixes Spanish and English and has typos, `place` values are slugs (`torres-del-paine`), some hours are blank, and trip length lives on a single lead row rather than every row.
+- It's operational data, so it's a little messy. The `detail` text mixes Spanish and English and has typos, `place` values are slugs (`torres-del-paine`), some hours are blank, and trip length lives on a single lead row rather than every row.
 - Days are **relative** (Day 1, Day 2…), not calendar dates. Treat each trip as a **season-agnostic template**, not a bookable date. If season matters to the traveler, use what you know about the region.
 - There are **no prices**. That's intentional — see below.
 
@@ -70,7 +70,7 @@ Rule of thumb: **if you built something that lives in a backend** (leads, tags, 
 
 We score two things separately, so going deep in one direction never hurts you:
 
-- **Craft & correctness** — grounding (zero hallucination), pt-BR quality, discovery, and knowing its limits.
+- **Craft & correctness** — an agent that is able to sell to a brazilian, pt-BR quality, discovery, and knowing its limits.
 - **Product & creativity** — the idea you chose to chase and how well you pulled it off.
 
 Plus basic engineering hygiene: can we run it, is the repo legible, did you make the invisible observable.
