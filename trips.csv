@@ -1,0 +1,94 @@
+"trip_id","start_day","end_day","n_days","start_hour","end_hour","place","item","detail"
+Atacama_Trip_Web,1,5,4,,,san-pedro-de-atacama,accommodation,Casa Don Tomas pieza doble
+Atacama_Trip_Web,1,1,0,"14:00","15:30",san-pedro-de-atacama,transport,Transfer from Calama airport to Hotel San Pedro de Atacama
+Atacama_Trip_Web,1,1,0,"16:00","20:00",san-pedro-de-atacama,activity,Vallecito tour with sunset cocktail
+Atacama_Trip_Web,2,2,0,"07:00","13:00",san-pedro-de-atacama,activity,Altiplanics Lagoons Tour
+Atacama_Trip_Web,3,3,0,"06:30","12:00",san-pedro-de-atacama,activity,Tatio Geyser and lagoon hike tour
+Atacama_Trip_Web,4,4,0,"07:00","13:00",san-pedro-de-atacama,activity,Legia Hike con Petrogrifos (privado)
+Atacama_Trip_Web,4,4,0,"21:00","23:30",san-pedro-de-atacama,activity,Tour Astronomico (Hemisferio Sur)
+Atacama_Trip_Web,5,5,0,"12:00","13:30",san-pedro-de-atacama,transport,Transfer from Hotel San Pedro de Atacama to Calama airport
+Chile_Argentina_Wine_Valleys_Web,1,7,6,,,santiago,insurance,Insurance 
+Chile_Argentina_Wine_Valleys_Web,1,1,0,,,santiago,transport,Round trip transfer from Santiago to Casa Blanca Wine Valley
+Chile_Argentina_Wine_Valleys_Web,1,1,0,,,santiago,transport,Transfer from Airport to Hotel
+Chile_Argentina_Wine_Valleys_Web,1,2,1,,,santiago,accommodation,Director Hotel - Vitacura neighborhood
+Chile_Argentina_Wine_Valleys_Web,1,1,0,"13:30","16:00",casa-blanca,activity,Tour and Lunch Wine tasting experience
+Chile_Argentina_Wine_Valleys_Web,2,4,2,,,colchagua,accommodation,Double room Casa Campo Hotel
+Chile_Argentina_Wine_Valleys_Web,2,2,0,"10:30","12:30",colchagua,culinary_experience,Icon Tour Montes Vineyard
+Chile_Argentina_Wine_Valleys_Web,2,2,0,"12:30","15:00",colchagua,culinary_experience,Fuegos de Apalta Culinary Experience
+Chile_Argentina_Wine_Valleys_Web,2,2,0,"8:00","10:30",santa-cruz,transport,Transfer from Santiago Hotel to Santa Cruz Valley and vineyards
+Chile_Argentina_Wine_Valleys_Web,3,3,0,"13:30","16:30",colchagua,activity,Tour + Lunch La Estampa Vineyard
+Chile_Argentina_Wine_Valleys_Web,4,7,3,,,mendoza,accommodation,Hotel Raices Aconcagua Pieza Superior
+Chile_Argentina_Wine_Valleys_Web,4,4,0,"13:45","14:50",mendoza,flight,Flight from Santiago to Mendoza
+Chile_Argentina_Wine_Valleys_Web,4,4,0,"15:15",,mendoza,transport,Aeropuerto a Centro Mendoza
+Chile_Argentina_Wine_Valleys_Web,4,4,0,"8:45","11:00",santa-cruz,transport,Transfer from Santa Cruz Hotel to Santiago
+Chile_Argentina_Wine_Valleys_Web,5,5,0,"12:20","13:00",mendoza,transport,Transfer from Mendoza to Vineyard
+Chile_Argentina_Wine_Valleys_Web,5,5,0,"13:00","14:00",mendoza,activity,Antigal Vineyard tour
+Chile_Argentina_Wine_Valleys_Web,5,5,0,"14:00","16:00",mendoza,activity,Antigal Vineyard Culinary experience
+Chile_Argentina_Wine_Valleys_Web,6,6,0,,,mendoza,transport,Transfer from Mendoza to Vineyard
+Chile_Argentina_Wine_Valleys_Web,6,6,0,"13:30",,mendoza,activity,La Azul Vineyard Tour and Culinary Experience
+Chile_Argentina_Wine_Valleys_Web,7,7,0,,,mendoza,transport,Transfer from Hotel to Airport
+Chile_Argentina_Wine_Valleys_Web,7,7,0,,,mendoza,activity,Horse Riding activity
+Chile_Argentina_Wine_Valleys_Web,7,7,0,,,mendoza,activity,Rafting activity
+Patagonian_Chile_Trek_Web,1,8,7,,,santiago,insurance,Insurance
+Patagonian_Chile_Trek_Web,1,8,7,,,santiago,merch,Merch Kit
+Patagonian_Chile_Trek_Web,1,1,0,,,puerto-natales,transport,Tranfer from Airport to Hotel
+Patagonian_Chile_Trek_Web,1,5,4,,,puerto-natales,accommodation,Big Sur Hotel
+Patagonian_Chile_Trek_Web,2,5,3,,,torres-del-paine,activity,Park entrance
+Patagonian_Chile_Trek_Web,2,2,0,"7:00","14:30",torres-del-paine,transport,Grey Navigation
+Patagonian_Chile_Trek_Web,2,2,0,"7:00",,puerto-natales,transport,Tranfer from Puerto Natales to Grey
+Patagonian_Chile_Trek_Web,3,3,0,"10:00","14:00",puerto-natales,activity,Hike Cerro Benitez option
+Patagonian_Chile_Trek_Web,3,3,0,"10:15","13:00",puerto-natales,activity,Horseback riding option
+Patagonian_Chile_Trek_Web,3,3,0,"7:00","15:00",puerto-natales,activity,Balmaceda and Serrano Navigation option
+Patagonian_Chile_Trek_Web,4,4,0,,,torres-del-paine,activity,Base Torres Guided full day hike
+Patagonian_Chile_Trek_Web,4,4,0,,,puerto-natales,culinary_experience,Box lunch included
+Patagonian_Chile_Trek_Web,4,4,0,"6:30","17:00",puerto-natales,transport,Tranfer from Puerto Natales to Base Torres Hike
+Patagonian_Chile_Trek_Web,5,7,2,,,puerto-varas,accommodation,Bellavista Hotel
+Patagonian_Chile_Trek_Web,5,5,0,"12:00",,puerto-natales,transport,Transfer from Hotel to Airport
+Patagonian_Chile_Trek_Web,5,5,0,"13:55","15:55",puerto-natales,flight,Flight from Puerto Natales to Puerto Montt
+Patagonian_Chile_Trek_Web,5,5,0,"16:15",,puerto-varas,transport,Transfer from Puerto Montt to Hotel
+Patagonian_Chile_Trek_Web,6,6,0,"9:00","17:00",puerto-varas,activity,"Full day tour Petrohue Waterfalls, Osorno Volcano and Todos los Santos Lake Navigation"
+Patagonian_Chile_Trek_Web,7,8,1,,,santiago,accommodation,Director Hotel - Vitacura neighborhood
+Patagonian_Chile_Trek_Web,7,7,0,"13:20",,puerto-varas,transport,Tranfer from Hotel to Puerto Montt airport
+Patagonian_Chile_Trek_Web,7,7,0,"15:30","17:18",puerto-varas,flight,Puerto Montt- Santiago
+Patagonian_Chile_Trek_Web,7,7,0,"17:45",,santiago,transport,Transfer from Airport to Hotel
+Patagonian_Chile_Trek_Web,7,7,0,"7:00","13:00",puerto-varas,activity,Petrohue River Rafting experience with Hotel Pick up
+Patagonian_Chile_Trek_Web,8,8,0,"13:30","18:00",santiago,transport,Round trip transfer from Santiago to Casa Blanca Wine Valley
+Patagonian_Chile_Trek_Web,8,8,0,"15:00","17:00",santiago,activity,Vina Casas del Bosque (Tour + Almuerzo)
+Patagonian_Chile_Trek_Web,8,8,0,"18:30","19:00",santiago,transport,Transfer from Hotel to Airport
+PuertoVaras_Chiloe_Cochamo,1,9,8,,,santiago,insurance,Insurance for your trip
+PuertoVaras_Chiloe_Cochamo,1,1,0,,,puerto-varas,culinary_experience,Culinary Barbecue 
+PuertoVaras_Chiloe_Cochamo,1,1,0,,,santiago,transport,Tranfer Hotel to Airport
+PuertoVaras_Chiloe_Cochamo,1,3,2,,,puerto-varas,accommodation,Casa Kalfu Hotel
+PuertoVaras_Chiloe_Cochamo,1,1,0,"11:10:00 AM - 12.54",,santiago,flight,Flight from Santiago to Pto Montt
+PuertoVaras_Chiloe_Cochamo,1,1,0,"1.15",,puerto-varas,transport,Tranfer from Airport to Hotel
+PuertoVaras_Chiloe_Cochamo,1,1,0,"14:40:00",,puerto-varas,activity,Rafting Experience with pick up in Hotel
+PuertoVaras_Chiloe_Cochamo,2,2,0,"09:00","17:00",puerto-varas,activity,Petrohue Waterfalls and Osorno Volcano Full Day
+PuertoVaras_Chiloe_Cochamo,3,4,1,,,chiloe,accommodation,Palafito Hotel Castro
+PuertoVaras_Chiloe_Cochamo,3,3,0,"07:00","07:20",puerto-varas,transport,Tranfer from Hotel to Airport
+PuertoVaras_Chiloe_Cochamo,3,5,2,"07:20",,puerto-varas,transport,Car rental
+PuertoVaras_Chiloe_Cochamo,3,4,1,"11:00","13:00",chiloe,activity,Tour Pinguinos
+PuertoVaras_Chiloe_Cochamo,3,3,0,"20:00","21:30",chiloe,culinary_experience,Culinary Experience Encanto Chilote Restaurant
+PuertoVaras_Chiloe_Cochamo,4,5,1,,,chiloe,accommodation,Parque tepuhueico
+PuertoVaras_Chiloe_Cochamo,4,4,0,"09:30","12:00",chiloe,activity,Cultural tour Castro and Chileo Islands
+PuertoVaras_Chiloe_Cochamo,4,4,0,"21:00","23:00",chiloe,activity,Tour nocturno Zona Bosque
+PuertoVaras_Chiloe_Cochamo,5,6,1,,,puerto-varas,accommodation,Casa Kalfu Hotel
+PuertoVaras_Chiloe_Cochamo,6,8,2,,,puerto-varas,gear,Sleeping bag
+PuertoVaras_Chiloe_Cochamo,6,8,2,,,cochamo,accommodation,Vista Hermosa Camping Cochamo
+PuertoVaras_Chiloe_Cochamo,6,6,0,"07:30","10:00",puerto-varas,transport,Bus from Puerto Varas to Cochamo
+PuertoVaras_Chiloe_Cochamo,6,6,0,"12:00","17:00",cochamo,activity,Hike from Cochamo to La Junta with porters
+PuertoVaras_Chiloe_Cochamo,7,7,0,"09:00","18:00",cochamo,activity,Guided Hike to Cerro Trinidad
+PuertoVaras_Chiloe_Cochamo,8,9,1,,,puerto-varas,accommodation,Casa Kalfu Hotel
+PuertoVaras_Chiloe_Cochamo,8,8,0,"16:00","19:00",cochamo,transport,Bus from Cochamo to Puerto Varas
+PuertoVaras_Chiloe_Cochamo,9,9,0,,,puerto-varas,transport,Tranfer from Hotel to Airport
+PuertoVaras_Chiloe_Cochamo,9,9,0,"17:39",,puerto-varas,flight,Flight from Pto Montt to Santiago
+Ski_Vinho,1,8,7,,,santiago,insurance,Seguro Deportivo (trekking recreacional) - Coverage for ski activities
+Ski_Vinho,2,8,6,,,santiago,merch,DipYourTrip adventure gear package
+Ski_Vinho,1,5,4,,,santiago,accommodation,Hotel Bidasoa
+Ski_Vinho,1,1,0,"08:00","09:00",santiago,transport,Tranfer from Airport to Hotel
+Ski_Vinho,2,2,0,,,valle-nevado,activity,Full day skiing at Valle Nevado
+Ski_Vinho,2,2,0,"07:00","09:30",valle-nevado,transport,Aeropuerto Valle 4 pax
+Ski_Vinho,3,3,0,,,farellones,activity,Full day ski Colorado
+Ski_Vinho,3,3,0,"08:00","09:00",farellones,transport,Transporte para 4 pax Santiago Farellones
+Ski_Vinho,4,4,0,"11:00","12:00",santiago,transport,Private transport Santiago to Casablanca Valley for wine tour
+Ski_Vinho,4,4,0,"12:15","15:00",santiago,culinary_experience,Wine tasting and lunch at Viña Casas del Bosque - premium Casablanca Valley experience
+Ski_Vinho,5,5,0,,,santiago,transport,Private airport transfer for departure
