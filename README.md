@@ -1,4 +1,4 @@
-# Dip Your Trip — WhatsApp agent for Brazilian travelers
+# Dip Your Trip: WhatsApp agent for Brazilian travelers
 
 A conversational agent that meets Brazilian travelers on WhatsApp, in natural
 Brazilian Portuguese, about DYT's 5 real trips. It answers **only** from the data
@@ -12,26 +12,26 @@ a human.
 ## Demo
 
 A real conversation over WhatsApp (Kapso sandbox), and the lead landing live in a
-Google Sheet — no code reading required to see it work.
+Google Sheet. You can see it work without reading any code.
 
 <p align="center">
   <img src="docs/whatsapp-demo.gif" width="300" alt="Live WhatsApp conversation in pt-BR"/>
 </p>
 
 The agent does discovery, recommends a grounded trip, **refuses an off-catalog
-country (Peru)**, **won't invent a price**, and **captures the lead + hands off**:
+country (Peru)**, **won't invent a price**, and **captures the lead and hands off**:
 
 > **Viajante:** oi! to pensando numa viagem pro chile mas to meio perdido kkk
-> **Agente:** Que legal! Chile é sensacional 😅 O que mais te atrai — deserto (Atacama), trilhas e natureza (Patagônia), vinho e gastronomia, ou esqui? E quantos dias você tem?
+> **Agente:** Que legal! Chile é sensacional 😅 O que mais te atrai? Deserto (Atacama), trilhas e natureza (Patagônia), vinho e gastronomia, ou esqui? E quantos dias você tem?
 >
 > **Viajante:** gosto de trilha mas não sou atleta, tenho uns 8 dias
-> **Agente:** Perfeito! O que mais encaixa é o **Trekking na Patagônia chilena** — 7 dias, trilhas lindas num ritmo equilibrado: navegação no Glaciar Grey, Base das Torres (guiada, no seu tempo), depois Puerto Varas com cachoeiras e vulcão…
+> **Agente:** Perfeito! O que mais encaixa é o **Trekking na Patagônia chilena**, 7 dias de trilhas lindas num ritmo equilibrado: navegação no Glaciar Grey, Base das Torres (guiada, no seu tempo), depois Puerto Varas com cachoeiras e vulcão…
 >
 > **Viajante:** vocês têm alguma viagem pro peru também?
-> **Agente:** Olha, que pena — a DYT hoje organiza viagens pelo **Chile e Argentina** mesmo. Peru não tá no nosso catálogo, infelizmente 😅
+> **Agente:** Olha, que pena, a DYT hoje organiza viagens pelo **Chile e Argentina** mesmo. Peru não tá no nosso catálogo, infelizmente 😅
 >
 > **Viajante:** massa! e quanto custa essa do sul?
-> **Agente:** Sobre preço eu não consigo te passar um valor por aqui — o orçamento é **sob medida**. Me passa seu **nome** e um **contato** que já registro e uma pessoa do time te chama com os valores. Pode ser? 😊
+> **Agente:** Sobre preço eu não consigo te passar um valor por aqui, o orçamento é **sob medida**. Me passa seu **nome** e um **contato** que já registro e uma pessoa do time te chama com os valores. Pode ser? 😊
 >
 > **Viajante:** sou o Bastián, meu email é bastian@email.com
 > **Agente:** Pronto, Bastián! ✅ Já registrei tudo e uma pessoa do time vai te chamar com os valores e detalhes.
@@ -45,47 +45,88 @@ The captured lead and the handoff appear immediately in the Google Sheet
 
 ## Architecture
 
-```
-WhatsApp ──► Kapso ──► POST /webhook (FastAPI)
-                           │  acks 200 immediately; processes in background
-                           ▼
-                      agent.respond()
-                       ├─ system prompt + catalog (grounding)
-                       ├─ LLM (DeepSeek, OpenAI-compatible · swappable)
-                       └─ tools: registrar_lead · solicitar_handoff
-                           │
-                           ├─► Google Sheets (leads, via Apps Script) ──► visible from outside
-                           └─► kapso.send_text() ──► reply on WhatsApp
+<p align="center">
+  <img src="docs/architecture.png" width="900" alt="Architecture diagram"/>
+</p>
+
+<details>
+<summary>Diagram source (Mermaid, renders natively on GitHub)</summary>
+
+```mermaid
+flowchart TD
+    T(["📱 Traveler on WhatsApp"])
+
+    subgraph CH["WhatsApp channels"]
+        K["Kapso<br/>webhook + send"]
+        B["Baileys sidecar<br/>voice notes (STT/TTS)"]
+    end
+
+    subgraph APP["FastAPI service"]
+        W["Webhook<br/>fast 200 ack + background"]
+        A["agent.respond()"]
+        P["system prompt +<br/>grounded catalog"]
+        TL["tools:<br/>registrar_lead /<br/>solicitar_handoff"]
+        W --> A
+        A --> P
+        A --> TL
+    end
+
+    LLM["DeepSeek<br/>(OpenAI-compatible)"]
+    GS[("Google Sheets<br/>leads + handoffs")]
+
+    subgraph DATA["Build-time pipeline"]
+        CSV["trips.csv (messy)"] --> BC["build_catalog.py"] --> JSON["trips.clean.json"]
+    end
+
+    T <--> K
+    T <--> B
+    K -->|"POST /webhook"| W
+    B -->|"POST /message"| W
+    A <-->|"chat + tool-calling"| LLM
+    TL -->|"append row"| GS
+    A -->|"reply (pt-BR)"| K
+    A -->|"reply / voice note"| B
+    JSON -.->|"grounding"| P
+
+    classDef chan fill:#e8f5ff,stroke:#3b82f6,color:#0b3d66;
+    classDef app fill:#f0fdf4,stroke:#22c55e,color:#14532d;
+    classDef ext fill:#fff7ed,stroke:#f97316,color:#7c2d12;
+    class K,B chan;
+    class W,A,P,TL app;
+    class LLM,GS ext;
 ```
 
-- **No RAG.** There are only 5 trips; the cleaned catalog fits entirely in the
-  prompt — simpler and more reliable. `scripts/build_catalog.py` turns the messy
-  CSV into `data/trips.clean.json`.
-- **Isolated channel.** Everything Kapso-specific lives in `app/channels/kapso.py`;
-  the agent only speaks `(user_id, text)`. Swapping channels = another adapter.
+</details>
+
+- **No RAG.** There are only 5 trips, so the cleaned catalog fits entirely in the
+  prompt. That's simpler and more reliable. `scripts/build_catalog.py` turns the
+  messy CSV into `data/trips.clean.json`.
+- **Isolated channel.** Everything Kapso-specific lives in `app/channels/kapso.py`,
+  and the agent only speaks `(user_id, text)`. Swapping channels is just another
+  adapter.
 - **Swappable LLM provider** via env var (`LLM_PROVIDER`).
 
 ## Layout
 
 ```
 app/
-  main.py        FastAPI webhook (Kapso → agent → reply)
-  agent.py       LLM loop + tool-calling
-  prompt.py      pt-BR persona + grounding rules
-  catalog.py     loads the clean catalog → text for the prompt
+  main.py        FastAPI webhook (Kapso to agent to reply)
+  agent.py       LLM loop and tool-calling
+  prompt.py      pt-BR persona and grounding rules
+  catalog.py     loads the clean catalog as text for the prompt
   tools.py       tool schemas and dispatch
-  leads.py       lead/handoff sink (local JSONL + Google Sheets)
+  leads.py       lead/handoff sink (local JSONL plus Google Sheets)
   memory.py      per-number memory (cross-session)
   config.py      env vars (LLM, Kapso, Sheets)
   channels/kapso.py   WhatsApp adapter (parse, signature, send)
 scripts/
-  build_catalog.py    messy CSV → trips.clean.json
+  build_catalog.py    messy CSV into trips.clean.json
   chat.py             local REPL to talk to the agent
   leads_webapp.gs     Apps Script that receives leads into the Google Sheet
 evals/
-  cases.py · harness.py · run_evals.py · test_grounding.py
+  cases.py, harness.py, run_evals.py, test_grounding.py
 data/
-  trips.csv · trips.clean.json
+  trips.csv, trips.clean.json
 ```
 
 ## Setup
@@ -147,11 +188,11 @@ Without this configured, leads are still recorded locally in
 
 ## Alternative channel: Baileys with voice notes
 
-A second, independent WhatsApp channel lives in [`baileys/`](baileys/) — a
+A second, independent WhatsApp channel lives in [`baileys/`](baileys/). It's a
 self-hosted Node sidecar built on Baileys that adds **native voice notes** (audio
 in/out via STT/TTS). It reuses the same Python brain through the channel-neutral
 `POST /message` endpoint, so nothing about the agent is duplicated. Kapso stays
-the primary, lower-risk channel; Baileys is the "go deep on audio" bet. See
+the primary, lower-risk channel, while Baileys is the "go deep on audio" bet. See
 [`baileys/README.md`](baileys/README.md) for how to run it and the tradeoffs.
 
 ## Evals (proof it doesn't hallucinate)
