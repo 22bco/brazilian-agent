@@ -1,0 +1,1071 @@
+{
+  "trips": [
+    {
+      "id": "Atacama_Trip_Web",
+      "name": "Atacama",
+      "duration": {
+        "advertised_days": 4,
+        "nights_booked": 4,
+        "content_last_day": 5,
+        "confident": true
+      },
+      "places": [
+        "San Pedro de Atacama"
+      ],
+      "accommodations": [
+        {
+          "place": "San Pedro de Atacama",
+          "name": "Casa Don Tomas pieza doble",
+          "from_day": 1,
+          "to_day": 5,
+          "nights": 4
+        }
+      ],
+      "included": [],
+      "flights": [],
+      "itinerary": [
+        {
+          "day": 1,
+          "items": [
+            {
+              "place": "San Pedro de Atacama",
+              "place_slug": "san-pedro-de-atacama",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Calama airport to Hotel San Pedro de Atacama",
+              "start": "14:00",
+              "end": "15:30"
+            },
+            {
+              "place": "San Pedro de Atacama",
+              "place_slug": "san-pedro-de-atacama",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Vallecito tour with sunset cocktail",
+              "start": "16:00",
+              "end": "20:00"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "items": [
+            {
+              "place": "San Pedro de Atacama",
+              "place_slug": "san-pedro-de-atacama",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Altiplanics Lagoons Tour",
+              "start": "07:00",
+              "end": "13:00"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "items": [
+            {
+              "place": "San Pedro de Atacama",
+              "place_slug": "san-pedro-de-atacama",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Tatio Geyser and lagoon hike tour",
+              "start": "06:30",
+              "end": "12:00"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "items": [
+            {
+              "place": "San Pedro de Atacama",
+              "place_slug": "san-pedro-de-atacama",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Legia Hike con Petrogrifos (privado)",
+              "start": "07:00",
+              "end": "13:00"
+            },
+            {
+              "place": "San Pedro de Atacama",
+              "place_slug": "san-pedro-de-atacama",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Tour Astronomico (Hemisferio Sur)",
+              "start": "21:00",
+              "end": "23:30"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "items": [
+            {
+              "place": "San Pedro de Atacama",
+              "place_slug": "san-pedro-de-atacama",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Hotel San Pedro de Atacama to Calama airport",
+              "start": "12:00",
+              "end": "13:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Chile_Argentina_Wine_Valleys_Web",
+      "name": "Vales do Vinho — Chile & Argentina",
+      "duration": {
+        "advertised_days": 6,
+        "nights_booked": 6,
+        "content_last_day": 7,
+        "confident": true
+      },
+      "places": [
+        "Santiago",
+        "Valle de Casablanca",
+        "Valle de Colchagua",
+        "Santa Cruz",
+        "Mendoza"
+      ],
+      "accommodations": [
+        {
+          "place": "Santiago",
+          "name": "Director Hotel - Vitacura neighborhood",
+          "from_day": 1,
+          "to_day": 2,
+          "nights": 1
+        },
+        {
+          "place": "Valle de Colchagua",
+          "name": "Double room Casa Campo Hotel",
+          "from_day": 2,
+          "to_day": 4,
+          "nights": 2
+        },
+        {
+          "place": "Mendoza",
+          "name": "Hotel Raices Aconcagua Pieza Superior",
+          "from_day": 4,
+          "to_day": 7,
+          "nights": 3
+        }
+      ],
+      "included": [
+        {
+          "category": "insurance",
+          "category_pt": "seguro",
+          "detail": "Insurance"
+        }
+      ],
+      "flights": [
+        {
+          "place": "Mendoza",
+          "place_slug": "mendoza",
+          "category": "flight",
+          "category_pt": "voo",
+          "detail": "Flight from Santiago to Mendoza",
+          "start": "13:45",
+          "end": "14:50",
+          "day": 4
+        }
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "items": [
+            {
+              "place": "Valle de Casablanca",
+              "place_slug": "casa-blanca",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Tour and Lunch Wine tasting experience",
+              "start": "13:30",
+              "end": "16:00"
+            },
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Round trip transfer from Santiago to Casa Blanca Wine Valley"
+            },
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Airport to Hotel"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "items": [
+            {
+              "place": "Santa Cruz",
+              "place_slug": "santa-cruz",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Santiago Hotel to Santa Cruz Valley and vineyards",
+              "start": "08:00",
+              "end": "10:30"
+            },
+            {
+              "place": "Valle de Colchagua",
+              "place_slug": "colchagua",
+              "category": "culinary_experience",
+              "category_pt": "experiência gastronômica",
+              "detail": "Icon Tour Montes Vineyard",
+              "start": "10:30",
+              "end": "12:30"
+            },
+            {
+              "place": "Valle de Colchagua",
+              "place_slug": "colchagua",
+              "category": "culinary_experience",
+              "category_pt": "experiência gastronômica",
+              "detail": "Fuegos de Apalta Culinary Experience",
+              "start": "12:30",
+              "end": "15:00"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "items": [
+            {
+              "place": "Valle de Colchagua",
+              "place_slug": "colchagua",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Tour + Lunch La Estampa Vineyard",
+              "start": "13:30",
+              "end": "16:30"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "items": [
+            {
+              "place": "Santa Cruz",
+              "place_slug": "santa-cruz",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Santa Cruz Hotel to Santiago",
+              "start": "08:45",
+              "end": "11:00"
+            },
+            {
+              "place": "Mendoza",
+              "place_slug": "mendoza",
+              "category": "flight",
+              "category_pt": "voo",
+              "detail": "Flight from Santiago to Mendoza",
+              "start": "13:45",
+              "end": "14:50"
+            },
+            {
+              "place": "Mendoza",
+              "place_slug": "mendoza",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Aeropuerto a Centro Mendoza",
+              "start": "15:15"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "items": [
+            {
+              "place": "Mendoza",
+              "place_slug": "mendoza",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Mendoza to Vineyard",
+              "start": "12:20",
+              "end": "13:00"
+            },
+            {
+              "place": "Mendoza",
+              "place_slug": "mendoza",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Antigal Vineyard tour",
+              "start": "13:00",
+              "end": "14:00"
+            },
+            {
+              "place": "Mendoza",
+              "place_slug": "mendoza",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Antigal Vineyard Culinary experience",
+              "start": "14:00",
+              "end": "16:00"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "items": [
+            {
+              "place": "Mendoza",
+              "place_slug": "mendoza",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "La Azul Vineyard Tour and Culinary Experience",
+              "start": "13:30"
+            },
+            {
+              "place": "Mendoza",
+              "place_slug": "mendoza",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Mendoza to Vineyard"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "items": [
+            {
+              "place": "Mendoza",
+              "place_slug": "mendoza",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Hotel to Airport"
+            },
+            {
+              "place": "Mendoza",
+              "place_slug": "mendoza",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Horse Riding activity"
+            },
+            {
+              "place": "Mendoza",
+              "place_slug": "mendoza",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Rafting activity"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Patagonian_Chile_Trek_Web",
+      "name": "Trekking na Patagônia chilena",
+      "duration": {
+        "advertised_days": 7,
+        "nights_booked": 7,
+        "content_last_day": 8,
+        "confident": true
+      },
+      "places": [
+        "Santiago",
+        "Puerto Natales",
+        "Torres del Paine",
+        "Puerto Varas"
+      ],
+      "accommodations": [
+        {
+          "place": "Puerto Natales",
+          "name": "Big Sur Hotel",
+          "from_day": 1,
+          "to_day": 5,
+          "nights": 4
+        },
+        {
+          "place": "Puerto Varas",
+          "name": "Bellavista Hotel",
+          "from_day": 5,
+          "to_day": 7,
+          "nights": 2
+        },
+        {
+          "place": "Santiago",
+          "name": "Director Hotel - Vitacura neighborhood",
+          "from_day": 7,
+          "to_day": 8,
+          "nights": 1
+        }
+      ],
+      "included": [
+        {
+          "category": "insurance",
+          "category_pt": "seguro",
+          "detail": "Insurance"
+        },
+        {
+          "category": "merch",
+          "category_pt": "kit DipYourTrip",
+          "detail": "Merch Kit"
+        }
+      ],
+      "flights": [
+        {
+          "place": "Puerto Natales",
+          "place_slug": "puerto-natales",
+          "category": "flight",
+          "category_pt": "voo",
+          "detail": "Flight from Puerto Natales to Puerto Montt",
+          "start": "13:55",
+          "end": "15:55",
+          "day": 5
+        },
+        {
+          "place": "Puerto Varas",
+          "place_slug": "puerto-varas",
+          "category": "flight",
+          "category_pt": "voo",
+          "detail": "Puerto Montt- Santiago",
+          "start": "15:30",
+          "end": "17:18",
+          "day": 7
+        }
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "items": [
+            {
+              "place": "Puerto Natales",
+              "place_slug": "puerto-natales",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Tranfer from Airport to Hotel"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "items": [
+            {
+              "place": "Torres del Paine",
+              "place_slug": "torres-del-paine",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Grey Navigation",
+              "start": "07:00",
+              "end": "14:30"
+            },
+            {
+              "place": "Puerto Natales",
+              "place_slug": "puerto-natales",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Tranfer from Puerto Natales to Grey",
+              "start": "07:00"
+            },
+            {
+              "place": "Torres del Paine",
+              "place_slug": "torres-del-paine",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Park entrance"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "items": [
+            {
+              "place": "Puerto Natales",
+              "place_slug": "puerto-natales",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Balmaceda and Serrano Navigation option",
+              "start": "07:00",
+              "end": "15:00"
+            },
+            {
+              "place": "Puerto Natales",
+              "place_slug": "puerto-natales",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Hike Cerro Benitez option",
+              "start": "10:00",
+              "end": "14:00"
+            },
+            {
+              "place": "Puerto Natales",
+              "place_slug": "puerto-natales",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Horseback riding option",
+              "start": "10:15",
+              "end": "13:00"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "items": [
+            {
+              "place": "Puerto Natales",
+              "place_slug": "puerto-natales",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Tranfer from Puerto Natales to Base Torres Hike",
+              "start": "06:30",
+              "end": "17:00"
+            },
+            {
+              "place": "Torres del Paine",
+              "place_slug": "torres-del-paine",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Base Torres Guided full day hike"
+            },
+            {
+              "place": "Puerto Natales",
+              "place_slug": "puerto-natales",
+              "category": "culinary_experience",
+              "category_pt": "experiência gastronômica",
+              "detail": "Box lunch included"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "items": [
+            {
+              "place": "Puerto Natales",
+              "place_slug": "puerto-natales",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Hotel to Airport",
+              "start": "12:00"
+            },
+            {
+              "place": "Puerto Natales",
+              "place_slug": "puerto-natales",
+              "category": "flight",
+              "category_pt": "voo",
+              "detail": "Flight from Puerto Natales to Puerto Montt",
+              "start": "13:55",
+              "end": "15:55"
+            },
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Puerto Montt to Hotel",
+              "start": "16:15"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "items": [
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Full day tour Petrohue Waterfalls, Osorno Volcano and Todos los Santos Lake Navigation",
+              "start": "09:00",
+              "end": "17:00"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "items": [
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Petrohue River Rafting experience with Hotel Pick up",
+              "start": "07:00",
+              "end": "13:00"
+            },
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Tranfer from Hotel to Puerto Montt airport",
+              "start": "13:20"
+            },
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "flight",
+              "category_pt": "voo",
+              "detail": "Puerto Montt- Santiago",
+              "start": "15:30",
+              "end": "17:18"
+            },
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Airport to Hotel",
+              "start": "17:45"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "items": [
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Round trip transfer from Santiago to Casa Blanca Wine Valley",
+              "start": "13:30",
+              "end": "18:00"
+            },
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Vina Casas del Bosque (Tour + Almuerzo)",
+              "start": "15:00",
+              "end": "17:00"
+            },
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transfer from Hotel to Airport",
+              "start": "18:30",
+              "end": "19:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "PuertoVaras_Chiloe_Cochamo",
+      "name": "Puerto Varas, Chiloé & Cochamó",
+      "duration": {
+        "advertised_days": 8,
+        "nights_booked": 8,
+        "content_last_day": 9,
+        "confident": true
+      },
+      "places": [
+        "Santiago",
+        "Puerto Varas",
+        "Chiloé",
+        "Cochamó"
+      ],
+      "accommodations": [
+        {
+          "place": "Puerto Varas",
+          "name": "Casa Kalfu Hotel",
+          "from_day": 1,
+          "to_day": 3,
+          "nights": 2
+        },
+        {
+          "place": "Chiloé",
+          "name": "Palafito Hotel Castro",
+          "from_day": 3,
+          "to_day": 4,
+          "nights": 1
+        },
+        {
+          "place": "Chiloé",
+          "name": "Parque tepuhueico",
+          "from_day": 4,
+          "to_day": 5,
+          "nights": 1
+        },
+        {
+          "place": "Puerto Varas",
+          "name": "Casa Kalfu Hotel",
+          "from_day": 5,
+          "to_day": 6,
+          "nights": 1
+        },
+        {
+          "place": "Cochamó",
+          "name": "Vista Hermosa Camping Cochamo",
+          "from_day": 6,
+          "to_day": 8,
+          "nights": 2
+        },
+        {
+          "place": "Puerto Varas",
+          "name": "Casa Kalfu Hotel",
+          "from_day": 8,
+          "to_day": 9,
+          "nights": 1
+        }
+      ],
+      "included": [
+        {
+          "category": "insurance",
+          "category_pt": "seguro",
+          "detail": "Insurance for your trip"
+        },
+        {
+          "category": "gear",
+          "category_pt": "equipamento",
+          "detail": "Sleeping bag"
+        }
+      ],
+      "flights": [
+        {
+          "place": "Santiago",
+          "place_slug": "santiago",
+          "category": "flight",
+          "category_pt": "voo",
+          "detail": "Flight from Santiago to Pto Montt",
+          "start": "11:10",
+          "end": "12:54",
+          "day": 1
+        },
+        {
+          "place": "Puerto Varas",
+          "place_slug": "puerto-varas",
+          "category": "flight",
+          "category_pt": "voo",
+          "detail": "Flight from Pto Montt to Santiago",
+          "start": "17:39",
+          "day": 9
+        }
+      ],
+      "itinerary": [
+        {
+          "day": 1,
+          "items": [
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "flight",
+              "category_pt": "voo",
+              "detail": "Flight from Santiago to Pto Montt",
+              "start": "11:10",
+              "end": "12:54"
+            },
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Rafting Experience with pick up in Hotel",
+              "start": "14:40"
+            },
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "culinary_experience",
+              "category_pt": "experiência gastronômica",
+              "detail": "Culinary Barbecue"
+            },
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Tranfer Hotel to Airport"
+            },
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Tranfer from Airport to Hotel",
+              "time_raw": "1.15"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "items": [
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Petrohue Waterfalls and Osorno Volcano Full Day",
+              "start": "09:00",
+              "end": "17:00"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "items": [
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Tranfer from Hotel to Airport",
+              "start": "07:00",
+              "end": "07:20"
+            },
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Car rental",
+              "start": "07:20"
+            },
+            {
+              "place": "Chiloé",
+              "place_slug": "chiloe",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Tour Pinguinos",
+              "start": "11:00",
+              "end": "13:00"
+            },
+            {
+              "place": "Chiloé",
+              "place_slug": "chiloe",
+              "category": "culinary_experience",
+              "category_pt": "experiência gastronômica",
+              "detail": "Culinary Experience Encanto Chilote Restaurant",
+              "start": "20:00",
+              "end": "21:30"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "items": [
+            {
+              "place": "Chiloé",
+              "place_slug": "chiloe",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Cultural tour Castro and Chileo Islands",
+              "start": "09:30",
+              "end": "12:00"
+            },
+            {
+              "place": "Chiloé",
+              "place_slug": "chiloe",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Tour nocturno Zona Bosque",
+              "start": "21:00",
+              "end": "23:00"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "items": [
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Bus from Puerto Varas to Cochamo",
+              "start": "07:30",
+              "end": "10:00"
+            },
+            {
+              "place": "Cochamó",
+              "place_slug": "cochamo",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Hike from Cochamo to La Junta with porters",
+              "start": "12:00",
+              "end": "17:00"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "items": [
+            {
+              "place": "Cochamó",
+              "place_slug": "cochamo",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Guided Hike to Cerro Trinidad",
+              "start": "09:00",
+              "end": "18:00"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "items": [
+            {
+              "place": "Cochamó",
+              "place_slug": "cochamo",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Bus from Cochamo to Puerto Varas",
+              "start": "16:00",
+              "end": "19:00"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "items": [
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "flight",
+              "category_pt": "voo",
+              "detail": "Flight from Pto Montt to Santiago",
+              "start": "17:39"
+            },
+            {
+              "place": "Puerto Varas",
+              "place_slug": "puerto-varas",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Tranfer from Hotel to Airport"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Ski_Vinho",
+      "name": "Ski & Vinho",
+      "duration": {
+        "advertised_days": 7,
+        "nights_booked": 4,
+        "content_last_day": 5,
+        "confident": false,
+        "note": "Dado inconsistente na fonte: a 'lead row' indica 7 dias, mas o programa só tem hospedagem e atividades até o dia 5 (4 diárias). NÃO afirmar um número fixo de dias; descrever pelo itinerário e, se preciso, confirmar com um humano."
+      },
+      "places": [
+        "Santiago",
+        "Valle Nevado",
+        "Farellones"
+      ],
+      "accommodations": [
+        {
+          "place": "Santiago",
+          "name": "Hotel Bidasoa",
+          "from_day": 1,
+          "to_day": 5,
+          "nights": 4
+        }
+      ],
+      "included": [
+        {
+          "category": "insurance",
+          "category_pt": "seguro",
+          "detail": "Seguro Deportivo (trekking recreacional) - Coverage for ski activities"
+        },
+        {
+          "category": "merch",
+          "category_pt": "kit DipYourTrip",
+          "detail": "DipYourTrip adventure gear package"
+        }
+      ],
+      "flights": [],
+      "itinerary": [
+        {
+          "day": 1,
+          "items": [
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Tranfer from Airport to Hotel",
+              "start": "08:00",
+              "end": "09:00"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "items": [
+            {
+              "place": "Valle Nevado",
+              "place_slug": "valle-nevado",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Aeropuerto Valle 4 pax",
+              "start": "07:00",
+              "end": "09:30"
+            },
+            {
+              "place": "Valle Nevado",
+              "place_slug": "valle-nevado",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Full day skiing at Valle Nevado"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "items": [
+            {
+              "place": "Farellones",
+              "place_slug": "farellones",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Transporte para 4 pax Santiago Farellones",
+              "start": "08:00",
+              "end": "09:00"
+            },
+            {
+              "place": "Farellones",
+              "place_slug": "farellones",
+              "category": "activity",
+              "category_pt": "atividade",
+              "detail": "Full day ski Colorado"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "items": [
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Private transport Santiago to Casablanca Valley for wine tour",
+              "start": "11:00",
+              "end": "12:00"
+            },
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "culinary_experience",
+              "category_pt": "experiência gastronômica",
+              "detail": "Wine tasting and lunch at Viña Casas del Bosque - premium Casablanca Valley experience",
+              "start": "12:15",
+              "end": "15:00"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "items": [
+            {
+              "place": "Santiago",
+              "place_slug": "santiago",
+              "category": "transport",
+              "category_pt": "transporte",
+              "detail": "Private airport transfer for departure"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
