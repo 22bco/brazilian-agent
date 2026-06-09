@@ -186,14 +186,27 @@ ngrok http 8099    # use the https URL + /webhook in the Kapso dashboard
 Without this configured, leads are still recorded locally in
 `data/leads.local.jsonl` (fallback).
 
-## Alternative channel: Baileys with voice notes
+## Voice notes: a second channel on Baileys
 
-A second, independent WhatsApp channel lives in [`baileys/`](baileys/). It's a
-self-hosted Node sidecar built on Baileys that adds **native voice notes** (audio
-in/out via STT/TTS). It reuses the same Python brain through the channel-neutral
-`POST /message` endpoint, so nothing about the agent is duplicated. Kapso stays
-the primary, lower-risk channel, while Baileys is the "go deep on audio" bet. See
-[`baileys/README.md`](baileys/README.md) for how to run it and the tradeoffs.
+The creative bet is a second, independent WhatsApp channel in
+[`baileys/`](baileys/), focused on **voice notes**, since audio is how Brazilians
+actually use WhatsApp. It reuses the exact same Python brain through the
+channel-neutral `POST /message` endpoint, so nothing about the agent is
+duplicated. The Node sidecar only handles the channel and the speech:
+
+<p align="center">
+  <img src="docs/architecture-baileys.png" width="900" alt="Baileys voice-notes flow"/>
+</p>
+
+An incoming voice note is transcribed with **Whisper** (STT), the brain answers in
+text, and the reply is voiced with **ElevenLabs** TTS (more natural pt-BR voices),
+transcoded to opus for WhatsApp. Text messages work the same way without the audio
+hops.
+
+Honest tradeoffs: Baileys is unofficial (against WhatsApp ToS, real ban risk) and
+needs a dedicated number, so Kapso stays the primary, lower-risk channel and
+Baileys is the "if we had another week" bet. Run instructions and the full
+tradeoffs are in [`baileys/README.md`](baileys/README.md).
 
 ## Evals (proof it doesn't hallucinate)
 

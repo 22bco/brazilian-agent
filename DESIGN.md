@@ -68,8 +68,10 @@ sharing one brain.
 - **Kapso** (`app/channels/kapso.py` + `/webhook`) — primary. Recommended by the
   brief, no ban risk, matches the sandbox tester-number flow. Async fast-ack.
 - **Baileys** (`baileys/`, a Node sidecar) — the creative bet: self-hosted, with
-  **native voice notes** (audio in → STT → brain → TTS → audio out). It talks to
-  the brain via the channel-neutral `POST /message`, so the agent is untouched.
+  **native voice notes**. Incoming audio goes through Whisper (STT), the brain
+  answers in text, and the reply is voiced with **ElevenLabs** TTS (more natural
+  Brazilian-Portuguese voices), transcoded to opus for WhatsApp. It talks to the
+  brain via the channel-neutral `POST /message`, so the agent is untouched.
 
 Baileys is unofficial (ban risk, dedicated number, you'd message our number
 directly), so Kapso is the deliverable channel and Baileys is the "delight" demo.
@@ -82,9 +84,10 @@ Details and tradeoffs in `baileys/README.md`.
   leads through the same sink). What's missing is *my* ability to create the user's
   Kapso account and deploy the Apps Script — both live in their accounts. Until
   `LEADS_WEBAPP_URL` is set, leads fall back to `data/leads.local.jsonl`.
-- **Voice notes** exist in the Baileys channel (audio in/out via STT/TTS), but
-  the code path is complete-but-not-live-tested: it needs a paired number and an
-  `OPENAI_API_KEY`. The Kapso channel is still text-only.
+- **Voice notes** exist in the Baileys channel (Whisper STT in, ElevenLabs TTS
+  out), but the code path is complete-but-not-live-tested: it needs a paired
+  number, `OPENAI_API_KEY` for STT, and an ElevenLabs key for the voice. The Kapso
+  channel is still text-only.
 - **Idempotency is in-memory** (`_seen_messages` set). A restart forgets seen
   message IDs; a persistent store would be needed in production.
 - **Season awareness is shallow** — the agent can comment on a region's season
