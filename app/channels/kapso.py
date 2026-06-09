@@ -1,5 +1,5 @@
 """
-kapso.py — Adaptador del canal WhatsApp vía Kapso.
+kapso.py - Adaptador del canal WhatsApp vía Kapso.
 
 Aísla TODO lo específico de Kapso: parseo del webhook entrante, verificación de
 firma, y envío de mensajes salientes. El resto del sistema (agent, main) solo
@@ -54,7 +54,7 @@ def verify_signature(raw_body: bytes, signature: str | None) -> bool:
     expected = hmac.new(
         KAPSO_WEBHOOK_SECRET.encode(), raw_body, hashlib.sha256
     ).hexdigest()
-    # algunos emisores prefijan "sha256=" — toleramos ambas formas
+    # algunos emisores prefijan "sha256=" - toleramos ambas formas
     received = signature.split("=", 1)[-1].strip()
     return hmac.compare_digest(expected, received)
 

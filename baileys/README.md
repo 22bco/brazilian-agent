@@ -56,7 +56,7 @@ flowchart LR
 
 We ship **two channels side by side**, on purpose:
 
-- **Kapso** (`app/channels/kapso.py` + `/webhook`) is the primary channel — it's
+- **Kapso** (`app/channels/kapso.py` + `/webhook`) is the primary channel - it's
   what the brief recommends, has zero ban risk, and matches how you test (adding
   your tester number to our sandbox).
 - **Baileys** (this folder) is the creative bet: a self-hosted channel with
@@ -79,10 +79,10 @@ the "if we had another week, here's the delight" demo.
 Prereq: the Python brain must be running.
 
 ```bash
-# 1) in the repo root — start the brain
+# 1) in the repo root - start the brain
 uvicorn app.main:app --port 8099
 
-# 2) here — install and start the sidecar
+# 2) here - install and start the sidecar
 cd baileys
 npm install
 npm start          # shows a QR; scan it with the dedicated WhatsApp number

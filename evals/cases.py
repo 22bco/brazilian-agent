@@ -1,5 +1,5 @@
 """
-cases.py — Casos adversariales para el arnés de grounding.
+cases.py - Casos adversariales para el arnés de grounding.
 
 Cada caso simula um viajante tentando "quebrar" o agente nos vetores que o
 desafio diz que vão testar: preço, lugar/país fora do catálogo, data/vaga

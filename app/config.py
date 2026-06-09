@@ -1,5 +1,5 @@
 """
-config.py — Configuración central leída de variables de entorno (.env).
+config.py - Configuración central leída de variables de entorno (.env).
 
 Diseño: el proveedor de LLM es intercambiable por env var (DeepSeek por defecto,
 OpenAI como alternativa) sin tocar el resto del código. Todo se resuelve a una
@@ -74,7 +74,7 @@ def load_llm_config() -> LLMConfig:
     )
 
 
-# --- Otros ajustes (leads, kapso, handoff) — usados en pasos posteriores ----
+# --- Otros ajustes (leads, kapso, handoff) - usados en pasos posteriores ----
 
 # Leads → Google Sheets vía Apps Script web app (POST). Si LEADS_WEBAPP_URL está
 # vacío, leads.py cae al respaldo local JSONL sin romper nada.

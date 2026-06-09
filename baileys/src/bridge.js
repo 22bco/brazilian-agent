@@ -1,4 +1,4 @@
-// bridge.js — Puente HTTP al cerebro Python.
+// bridge.js - Puente HTTP al cerebro Python.
 // El agente (grounding, tools, leads, memoria) NO se duplica: este canal solo
 // habla (user_id, texto) con el endpoint canal-neutral POST /message.
 

@@ -1,5 +1,5 @@
 """
-test_grounding.py — Wrapper de pytest sobre el arnés de grounding.
+test_grounding.py - Wrapper de pytest sobre el arnés de grounding.
 
 Ejecuta cada caso adversarial como un test parametrizado. Se salta si no hay
 API key configurada (los evals llaman al LLM real).

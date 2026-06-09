@@ -1,4 +1,4 @@
-# Secrets — NUNCA subir
+# Secrets - NUNCA subir
 .env
 *.key
 service_account*.json

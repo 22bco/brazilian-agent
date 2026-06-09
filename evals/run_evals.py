@@ -1,5 +1,5 @@
 """
-run_evals.py — Corre todos los casos de grounding y emite un reporte.
+run_evals.py - Corre todos los casos de grounding y emite un reporte.
 
 Uso:
     python3 -m evals.run_evals

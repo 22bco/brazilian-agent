@@ -1,4 +1,4 @@
-// index.js — Sidecar del canal WhatsApp vía Baileys (alternativo a Kapso).
+// index.js - Sidecar del canal WhatsApp vía Baileys (alternativo a Kapso).
 //
 // Arquitectura (paralela a la de Kapso): este proceso solo hace de CANAL.
 // Recibe mensajes de WhatsApp, los puentea al cerebro Python (POST /message) y
@@ -69,7 +69,7 @@ async function handleMessage(sock, msg) {
   if (audio) {
     if (!audioEnabled) {
       await sock.sendMessage(jid, {
-        text: "Recebi seu áudio! 🙏 Mas no momento consigo responder melhor por texto — pode me escrever?",
+        text: "Recebi seu áudio! 🙏 Mas no momento consigo responder melhor por texto - pode me escrever?",
       });
       return;
     }

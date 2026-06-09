@@ -1,5 +1,5 @@
 """
-build_catalog.py — Limpia data/trips.csv (operacional, "sucio") y produce
+build_catalog.py - Limpia data/trips.csv (operacional, "sucio") y produce
 data/trips.clean.json, el catálogo estructurado que el agente usa para grounding.
 
 Qué resuelve de la suciedad del CSV (documentada en el README del reto):
@@ -53,7 +53,7 @@ PLACE_NAMES = {
 # trip_id -> nombre amistoso para la conversación (derivado del tema/lugares).
 TRIP_NAMES = {
     "Atacama_Trip_Web": "Atacama",
-    "Chile_Argentina_Wine_Valleys_Web": "Vales do Vinho — Chile & Argentina",
+    "Chile_Argentina_Wine_Valleys_Web": "Vales do Vinho - Chile & Argentina",
     "Patagonian_Chile_Trek_Web": "Trekking na Patagônia chilena",
     "PuertoVaras_Chiloe_Cochamo": "Puerto Varas, Chiloé & Cochamó",
     "Ski_Vinho": "Ski & Vinho",

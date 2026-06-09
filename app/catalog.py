@@ -1,5 +1,5 @@
 """
-catalog.py — Carga data/trips.clean.json y lo renderiza a texto compacto en
+catalog.py - Carga data/trips.clean.json y lo renderiza a texto compacto en
 pt-BR para inyectarlo en el system prompt.
 
 Por qué texto y no JSON crudo: el modelo lo lee mejor, gasta menos tokens y
@@ -41,7 +41,7 @@ def _fmt_duration(trip: dict) -> str:
         return f"{d['advertised_days']} dias ({_diarias(d['nights_booked'])})"
     # Caso ambiguo (Ski): no afirmamos número fijo.
     return (
-        f"duração a confirmar — programa com hospedagem/atividades até o dia "
+        f"duração a confirmar - programa com hospedagem/atividades até o dia "
         f"{d['content_last_day']} ({_diarias(d['nights_booked'])}). "
         f"[ATENÇÃO: não afirmar um número fixo de dias]"
     )

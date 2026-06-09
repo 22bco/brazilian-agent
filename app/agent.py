@@ -1,5 +1,5 @@
 """
-agent.py — Loop del agente: LLM (DeepSeek vía SDK OpenAI-compatible) + tool-calling.
+agent.py - Loop del agente: LLM (DeepSeek vía SDK OpenAI-compatible) + tool-calling.
 
 Punto de entrada principal: `respond(user_id, user_text) -> str`.
 - Carga la conversación del usuario (memoria por número, cross-session).
@@ -102,7 +102,7 @@ def respond(user_id: str, user_text: str) -> str:
                     result = handle_tool_call(
                         tc.function.name, tc.function.arguments, user_id
                     )
-                except Exception as exc:  # noqa: BLE001 — robustez deliberada
+                except Exception as exc:  # noqa: BLE001 - robustez deliberada
                     result = f"ERRO ao executar a ação '{tc.function.name}': {exc}"
                 conv.add("tool", result, tool_call_id=tc.id)
 

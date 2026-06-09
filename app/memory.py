@@ -1,5 +1,5 @@
 """
-memory.py — Estado de conversación por número de WhatsApp.
+memory.py - Estado de conversación por número de WhatsApp.
 
 Guarda el historial de mensajes (para discovery multi-turno) y persiste en disco
 como JSON, de modo que la conversación sobreviva reinicios del proceso

@@ -1,5 +1,5 @@
 """
-tools.py — Definición y despacho de las tools (function-calling) del agente.
+tools.py - Definición y despacho de las tools (function-calling) del agente.
 
 Dos acciones de backend:
   - registrar_lead: captura nombre + contacto + interés del viajero.

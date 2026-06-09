@@ -1,4 +1,4 @@
-// config.js — Carga el .env de la raíz del repo y expone la configuración del
+// config.js - Carga el .env de la raíz del repo y expone la configuración del
 // sidecar. Reutiliza el mismo .env donde viven las llaves del core Python.
 
 import dotenv from "dotenv";

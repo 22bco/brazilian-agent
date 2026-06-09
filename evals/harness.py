@@ -1,5 +1,5 @@
 """
-harness.py — Motor del arnés de evals.
+harness.py - Motor del arnés de evals.
 
 Para cada caso: corre una conversación FRESCA contra el agente real y evalúa la
 última respuesta con dos capas:

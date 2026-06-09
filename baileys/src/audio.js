@@ -1,4 +1,4 @@
-// audio.js — Voice notes: STT (transcripción) y TTS (síntesis).
+// audio.js - Voice notes: STT (transcripción) y TTS (síntesis).
 // Vive en la capa de canal, así el cerebro Python sigue siendo texto puro.
 //
 //   STT: OpenAI Whisper (audio ogg/opus de WhatsApp -> texto).

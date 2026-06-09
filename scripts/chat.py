@@ -1,5 +1,5 @@
 """
-chat.py — REPL local para conversar con el agente sin WhatsApp.
+chat.py - REPL local para conversar con el agente sin WhatsApp.
 
 Uso:
     python3 -m scripts.chat            # número de prueba por defecto

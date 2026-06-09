@@ -1,5 +1,5 @@
 /**
- * leads_webapp.gs — Google Apps Script para recibir leads/handoffs del agente
+ * leads_webapp.gs - Google Apps Script para recibir leads/handoffs del agente
  * y escribirlos en esta Google Sheet.
  *
  * CÓMO DESPLEGAR (una sola vez):

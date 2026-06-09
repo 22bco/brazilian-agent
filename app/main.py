@@ -1,5 +1,5 @@
 """
-main.py — Webhook FastAPI que conecta Kapso (WhatsApp) con el agente.
+main.py - Webhook FastAPI que conecta Kapso (WhatsApp) con el agente.
 
 Flujo:
   POST /webhook  → verifica firma → parsea mensaje entrante → ACK 200 inmediato
@@ -27,7 +27,7 @@ from app.agent import respond
 from app.channels import kapso
 from app.config import BRIDGE_TOKEN
 
-app = FastAPI(title="Dip Your Trip — Brazilian WhatsApp Agent")
+app = FastAPI(title="Dip Your Trip - Brazilian WhatsApp Agent")
 
 # message_ids procesados (evita doble respuesta en reintentos de Kapso, que son
 # frecuentes porque la llamada al LLM suele superar los 5s de su webhook).

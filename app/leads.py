@@ -1,5 +1,5 @@
 """
-leads.py — Sink de leads y handoffs.
+leads.py - Sink de leads y handoffs.
 
 Abstracción única que usan las tools. En el paso 2 escribe a un JSONL local
 (data/leads.local.jsonl), de modo que el flujo completo se pueda probar por CLI
@@ -68,7 +68,7 @@ def _post_to_sheet(record: dict) -> None:
         data = resp.json()
         if not data.get("ok"):
             print(f"[SHEETS] aviso: respuesta no-ok: {data}")
-    except Exception as exc:  # red caída, timeout, etc. — no rompemos la conversa
+    except Exception as exc:  # red caída, timeout, etc. - no rompemos la conversa
         print(f"[SHEETS] error al enviar (queda en respaldo local): {exc}")
 
 
