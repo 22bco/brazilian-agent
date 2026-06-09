@@ -28,3 +28,7 @@ data/leads.local.jsonl
 baileys/node_modules/
 # auth/ = credenciales de la sesión de WhatsApp (¡NUNCA subir!)
 baileys/auth/
+
+# Videos crudos del demo (solo commiteamos el GIF optimizado)
+docs/*.mp4
+docs/*.mov

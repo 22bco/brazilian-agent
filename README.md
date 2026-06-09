@@ -9,6 +9,40 @@ a human.
 > The original challenge brief is in [`CHALLENGE.md`](CHALLENGE.md).
 > Design decisions and tradeoffs are in [`DESIGN.md`](DESIGN.md).
 
+## Demo
+
+A real conversation over WhatsApp (Kapso sandbox), and the lead landing live in a
+Google Sheet — no code reading required to see it work.
+
+<p align="center">
+  <img src="docs/whatsapp-demo.gif" width="300" alt="Live WhatsApp conversation in pt-BR"/>
+</p>
+
+The agent does discovery, recommends a grounded trip, **refuses an off-catalog
+country (Peru)**, **won't invent a price**, and **captures the lead + hands off**:
+
+> **Viajante:** oi! to pensando numa viagem pro chile mas to meio perdido kkk
+> **Agente:** Que legal! Chile é sensacional 😅 O que mais te atrai — deserto (Atacama), trilhas e natureza (Patagônia), vinho e gastronomia, ou esqui? E quantos dias você tem?
+>
+> **Viajante:** gosto de trilha mas não sou atleta, tenho uns 8 dias
+> **Agente:** Perfeito! O que mais encaixa é o **Trekking na Patagônia chilena** — 7 dias, trilhas lindas num ritmo equilibrado: navegação no Glaciar Grey, Base das Torres (guiada, no seu tempo), depois Puerto Varas com cachoeiras e vulcão…
+>
+> **Viajante:** vocês têm alguma viagem pro peru também?
+> **Agente:** Olha, que pena — a DYT hoje organiza viagens pelo **Chile e Argentina** mesmo. Peru não tá no nosso catálogo, infelizmente 😅
+>
+> **Viajante:** massa! e quanto custa essa do sul?
+> **Agente:** Sobre preço eu não consigo te passar um valor por aqui — o orçamento é **sob medida**. Me passa seu **nome** e um **contato** que já registro e uma pessoa do time te chama com os valores. Pode ser? 😊
+>
+> **Viajante:** sou o Bastián, meu email é bastian@email.com
+> **Agente:** Pronto, Bastián! ✅ Já registrei tudo e uma pessoa do time vai te chamar com os valores e detalhes.
+
+The captured lead and the handoff appear immediately in the Google Sheet
+(`user_id` redacted here):
+
+<p align="center">
+  <img src="docs/sheet-leads.png" width="640" alt="Leads appearing live in a Google Sheet"/>
+</p>
+
 ## Architecture
 
 ```
