@@ -1,94 +1,132 @@
-# Dip Your Trip — Growth Engineer Challenge
-### Build a WhatsApp travel agent for Brazilian travelers
+# Dip Your Trip — WhatsApp agent for Brazilian travelers
 
-**Time:** one week from when you receive this.
+A conversational agent that meets Brazilian travelers on WhatsApp, in natural
+Brazilian Portuguese, about DYT's 5 real trips. It answers **only** from the data
+(never invents a price, hotel, place, or date), runs discovery with a few sharp
+questions, and when the topic turns to price it captures the lead and hands off to
+a human.
 
----
+> The original challenge brief is in [`CHALLENGE.md`](CHALLENGE.md).
+> Design decisions and tradeoffs are in [`DESIGN.md`](DESIGN.md).
 
-## Why this challenge
+## Architecture
 
-Dip Your Trip is an AI-native Services Company, working as AI-run travel agency. Many of our travelers reach us on WhatsApp, in Portuguese, often not yet knowing exactly what they want. We want to see how you'd build the first version of an agent that meets one of those travelers and actually helps — grounded in our real trips, speaking natural Brazilian Portuguese, and knowing when to bring a human in.
+```
+WhatsApp ──► Kapso ──► POST /webhook (FastAPI)
+                           │  acks 200 immediately; processes in background
+                           ▼
+                      agent.respond()
+                       ├─ system prompt + catalog (grounding)
+                       ├─ LLM (DeepSeek, OpenAI-compatible · swappable)
+                       └─ tools: registrar_lead · solicitar_handoff
+                           │
+                           ├─► Google Sheets (leads, via Apps Script) ──► visible from outside
+                           └─► kapso.send_text() ──► reply on WhatsApp
+```
 
-This is deliberately open. We care less about checking boxes and more about how you think: how you ground an LLM in real data, how you design a conversation someone would enjoy on WhatsApp, and what tradeoffs you make under ambiguity.
+- **No RAG.** There are only 5 trips; the cleaned catalog fits entirely in the
+  prompt — simpler and more reliable. `scripts/build_catalog.py` turns the messy
+  CSV into `data/trips.clean.json`.
+- **Isolated channel.** Everything Kapso-specific lives in `app/channels/kapso.py`;
+  the agent only speaks `(user_id, text)`. Swapping channels = another adapter.
+- **Swappable LLM provider** via env var (`LLM_PROVIDER`).
 
-## The mission
+## Layout
 
-Build an agent, reachable on a real WhatsApp number, that holds a natural Portuguese conversation about our 5 trips: it answers questions, figures out what the traveler is looking for, recommends, and hands off to a human at the right moment. Everything it says about the trips must come from the data we give you. It must never invent a detail, a price, or a trip that doesn't exist.
+```
+app/
+  main.py        FastAPI webhook (Kapso → agent → reply)
+  agent.py       LLM loop + tool-calling
+  prompt.py      pt-BR persona + grounding rules
+  catalog.py     loads the clean catalog → text for the prompt
+  tools.py       tool schemas and dispatch
+  leads.py       lead/handoff sink (local JSONL + Google Sheets)
+  memory.py      per-number memory (cross-session)
+  config.py      env vars (LLM, Kapso, Sheets)
+  channels/kapso.py   WhatsApp adapter (parse, signature, send)
+scripts/
+  build_catalog.py    messy CSV → trips.clean.json
+  chat.py             local REPL to talk to the agent
+  leads_webapp.gs     Apps Script that receives leads into the Google Sheet
+evals/
+  cases.py · harness.py · run_evals.py · test_grounding.py
+data/
+  trips.csv · trips.clean.json
+```
 
-## The data
+## Setup
 
-In `data/trips.csv` you'll find 5 real DYT itineraries — Atacama, a Chile + Argentina wine route, a Patagonia trek, a Lake District / Chiloé / Cochamó trip, and a ski + wine trip. It's in long format: one row per itinerary item (accommodation, transport, activity, flight, meal, insurance, gear…), with columns `trip_id, start_day, end_day, n_days, start_hour, end_hour, place, item, detail`.
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp env.example .env          # edit .env with your keys
+python -m scripts.build_catalog   # generates data/trips.clean.json
+```
 
-A few honest things about it:
+At minimum, fill in `.env`:
 
-- It's operational data, so it's a little messy. The `detail` text mixes Spanish and English and has typos, `place` values are slugs (`torres-del-paine`), some hours are blank, and trip length lives on a single lead row rather than every row.
-- Days are **relative** (Day 1, Day 2…), not calendar dates. Treat each trip as a **season-agnostic template**, not a bookable date. If season matters to the traveler, use what you know about the region.
-- There are **no prices**. That's intentional — see below.
+```
+LLM_PROVIDER=deepseek
+DEEPSEEK_API_KEY=...
+```
 
-Turning that into clean, warm pt-BR is part of the job.
+## Run
 
-## What must work (the baseline)
+**Chat locally (no WhatsApp):**
 
-- **Natural Brazilian Portuguese.** Not translated-sounding.
-- **Strictly grounded answers** about the 5 trips: itinerary by day, what's included, where you sleep, transfers and flights, how intense it is, who it suits, how long it lasts.
-- **Discovery.** You will *not* be told who's messaging or what they want. The agent has to find that out through conversation — ideally a few sharp questions, not a ten-question form.
-- **Graceful limits.** Asked about something not in the data (another country, a specific date, a hotel that isn't listed), it says so instead of inventing.
-- **Price → human.** We don't publish prices. When someone asks *"quanto custa?"*, that's the cue to capture the lead (name + contact + what they want) and offer to connect them with a person. Inventing a price is an automatic fail.
+```bash
+python -m scripts.chat
+```
 
-## Where you get to be creative
+**Webhook (to connect to WhatsApp):**
 
-The *how* is entirely yours — model, framework, retrieval, personality. Go **deep on one idea** rather than wide on five half-built ones. Some directions (not a checklist):
+```bash
+uvicorn app.main:app --reload --port 8099
+```
 
-- Voice notes in and out — audio is how Brazilians actually use WhatsApp.
-- A real personality / brand voice.
-- Sending a map or photos inline.
-- A genuinely good *"não sei o que quero ainda"* discovery flow.
-- Clean human handoff and lead qualification.
-- Cross-session memory.
-- Cost / latency engineering, with real numbers.
-- Your own eval harness proving the agent doesn't hallucinate.
+Expose it with a tunnel and register the URL in Kapso (see below):
 
-If there's something you think would delight a Brazilian traveler that we didn't list — build that instead, and tell us why.
+```bash
+ngrok http 8099    # use the https URL + /webhook in the Kapso dashboard
+```
 
-## Tech & setup
+## Connect WhatsApp (Kapso)
 
-- **WhatsApp via Kapso.** Create your own free Kapso account; the free plan includes a sandbox number you can test on with no Meta setup. To let us talk to your agent, you'll register our tester number in your sandbox session (we'll send you a number to add).
-- **An LLM of your choice** (OpenAI or Anthropic). Keep total spend under **US$5** — easily enough. With only 5 trips, the whole catalog fits in context cheaply, so the cap is a generous sanity bound; spend your thinking on the conversation, not premature optimization.
-- **A webhook** that receives messages and replies. Host it wherever you like — Cloud Run, Cloudflare Workers, Render, Kapso functions — your call.
-- **Human handoff:** during development, route any escalation to *your own* email/number — never a real DYT contact. A real contact only gets wired in at the final stage.
+1. Create a free [Kapso](https://kapso.ai) account (the free plan includes a
+   sandbox number, no Meta setup).
+2. In the dashboard, edit the connected number and point the webhook to
+   `https://YOUR-TUNNEL/webhook`.
+3. Copy the API key (Project Settings → API Keys) into `KAPSO_API_KEY` in `.env`.
+4. (Optional, recommended) set `KAPSO_WEBHOOK_SECRET` to validate the
+   `X-Webhook-Signature` header.
 
-## What to deliver
+## See leads from outside (Google Sheets)
 
-1. **A working WhatsApp number** we can message in Portuguese (sandbox is fine).
-2. **The repo**, with a README clear enough to run it.
-3. **A way to see your leads from the outside** — a shared sheet, Airtable, a tiny page, anything — so we can chat, leave fake contact details, and watch the lead appear. Same for handoff: show us how we'd see it fire (a live takeover in your Kapso inbox works).
-4. **A short `DESIGN.md`:** the decisions you made and why, the tradeoffs, the one thing you're proudest of, the one thing currently faked or broken, and what you'd do with another week.
+1. Open your Google Sheet → Extensions → Apps Script.
+2. Paste `scripts/leads_webapp.gs`, change `SECRET`, and deploy as a **web app**
+   (access: "Anyone").
+3. Put the `/exec` URL in `LEADS_WEBAPP_URL` and the same secret in
+   `LEADS_WEBAPP_SECRET` in `.env`.
 
-Rule of thumb: **if you built something that lives in a backend** (leads, tags, memory, handoff), **give us a way to see it work without reading your code.**
+Without this configured, leads are still recorded locally in
+`data/leads.local.jsonl` (fallback).
 
-## How we'll evaluate
+## Alternative channel: Baileys with voice notes
 
-We score two things separately, so going deep in one direction never hurts you:
+A second, independent WhatsApp channel lives in [`baileys/`](baileys/) — a
+self-hosted Node sidecar built on Baileys that adds **native voice notes** (audio
+in/out via STT/TTS). It reuses the same Python brain through the channel-neutral
+`POST /message` endpoint, so nothing about the agent is duplicated. Kapso stays
+the primary, lower-risk channel; Baileys is the "go deep on audio" bet. See
+[`baileys/README.md`](baileys/README.md) for how to run it and the tradeoffs.
 
-- **Craft & correctness** — an agent that is able to sell to a brazilian, pt-BR quality, discovery, and knowing its limits.
-- **Product & creativity** — the idea you chose to chase and how well you pulled it off.
+## Evals (proof it doesn't hallucinate)
 
-Plus basic engineering hygiene: can we run it, is the repo legible, did you make the invisible observable.
+```bash
+python -m evals.run_evals      # report with PASS/FAIL per case
+pytest evals/ -v               # as tests
+```
 
-Heads up — we'll actively try to break the grounding: places we don't go, trips in the wrong season, prices, details that aren't in the data. An agent that holds the line and bridges to a human scores far higher than one that improvises.
-
-## The bar (example exchange)
-
-> **Viajante:** oi! to pensando em viajar pro chile em janeiro mas to meio perdido 😅
->
-> **Agente:** Oi! Janeiro é uma época linda pra isso 🙌 Pra eu te indicar a viagem certa: você curte mais natureza e trilha, ou prefere um ritmo mais tranquilo — paisagem, comida, vinho?
->
-> **Viajante:** trilha eu curto mas não sou nenhum atleta kkk
->
-> **Agente:** Saquei, então te poupo das mais punk. Tenho uma pelo sul — Puerto Varas, Chiloé e o vale de Cochamó — com trilha de verdade mas em doses civilizadas, vulcão, ilha e muita natureza. Quantos dias mais ou menos você tem?
->
-> **Viajante:** uns 8, 9 dias. e quanto fica?
->
-> **Agente:** 8–9 dias encaixa certinho — essa é de 8 dias. Sobre valor, a gente monta o orçamento sob medida, então prefiro te passar pra uma pessoa do time que fecha tudo contigo. Me manda seu nome e um contato (email ou WhatsApp)? Já te chamo com os detalhes.
-
-That's the tone, the discovery, the intensity-by-inference, and the price-to-human bridge — in one short exchange.
+The cases attack grounding along the brief's vectors: price (direct and
+disguised), off-catalog country, specific date/availability, non-existent hotel,
+invented detail, and the ambiguous Ski & Vinho duration.
