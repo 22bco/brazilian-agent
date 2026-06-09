@@ -1,0 +1,30 @@
+# Secrets — NUNCA subir
+.env
+*.key
+service_account*.json
+google-credentials*.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Estado local del agente (memoria por número en dev)
+data/sessions/
+*.log
+
+# SO / editores
+.DS_Store
+.idea/
+.vscode/
+
+# Leads locales de desarrollo (el respaldo real va a Google Sheets)
+data/leads.local.jsonl
+
+# Sidecar Baileys (Node)
+baileys/node_modules/
+# auth/ = credenciales de la sesión de WhatsApp (¡NUNCA subir!)
+baileys/auth/
