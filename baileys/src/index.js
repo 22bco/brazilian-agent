@@ -23,6 +23,7 @@ import qrcode from "qrcode-terminal";
 import { config, audioEnabled } from "./config.js";
 import { askBrain } from "./bridge.js";
 import { synthesize, transcribe } from "./audio.js";
+import { typingDelayMs, recordingDelayMs, jitter } from "./humanize.js";
 
 const logger = pino({ level: "silent" });
 
@@ -49,6 +50,37 @@ function extractText(content) {
   ).trim();
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Envía texto "como humano": parte la resposta en mensajitos por párrafo (máx 3),
+// con "digitando..." y una pausa que escala con el largo (ver humanize.js).
+async function sendHumanText(sock, jid, text, incomingChars = 0) {
+  const parts = text.split(/\n{2,}/).map((s) => s.trim()).filter(Boolean);
+  const chunks = (parts.length ? parts : [text]).slice(0, 3);
+  for (let i = 0; i < chunks.length; i++) {
+    const part = chunks[i];
+    await sock.sendPresenceUpdate("composing", jid);
+    // el tiempo de "leer" tu mensaje solo cuenta antes del primer trozo
+    await sleep(jitter(typingDelayMs(i === 0 ? incomingChars : 0, part.length)));
+    await sock.sendPresenceUpdate("paused", jid);
+    await sock.sendMessage(jid, { text: part });
+    if (i < chunks.length - 1) await sleep(jitter(450));
+  }
+}
+
+// Envía la nota de voz con "gravando áudio..." y una pausa proporcional al largo
+// del audio (ver humanize.js).
+async function sendHumanVoice(sock, jid, audioBuffer) {
+  await sock.sendPresenceUpdate("recording", jid);
+  await sleep(jitter(recordingDelayMs(audioBuffer.length)));
+  await sock.sendPresenceUpdate("paused", jid);
+  await sock.sendMessage(jid, {
+    audio: audioBuffer,
+    ptt: true,
+    mimetype: "audio/ogg; codecs=opus",
+  });
+}
+
 async function handleMessage(sock, msg) {
   const jid = msg.key.remoteJid;
   // Ignorar: salidas propias, estados, y grupos (el agente es 1:1).
@@ -63,14 +95,17 @@ async function handleMessage(sock, msg) {
   const audio = content?.audioMessage;
   const text = extractText(content);
 
-  await sock.sendPresenceUpdate("composing", jid);
+  // "Visto": marca el mensaje como leído antes de responder (toque humano).
+  await sock.readMessages([msg.key]).catch(() => {});
 
   // --- Nota de voz entrante -------------------------------------------------
   if (audio) {
     if (!audioEnabled) {
-      await sock.sendMessage(jid, {
-        text: "Recebi seu áudio! 🙏 Mas no momento consigo responder melhor por texto - pode me escrever?",
-      });
+      await sendHumanText(
+        sock,
+        jid,
+        "Recebi seu áudio! 🙏 Mas agora consigo responder melhor por texto, pode me escrever?"
+      );
       return;
     }
     const buffer = await downloadMediaMessage(
@@ -84,11 +119,7 @@ async function handleMessage(sock, msg) {
     console.log(`🎙️  ${userId}: ${transcript}`);
     const reply = await askBrain(userId, transcript);
     const voice = await synthesize(reply);
-    await sock.sendMessage(jid, {
-      audio: voice,
-      ptt: true,
-      mimetype: "audio/ogg; codecs=opus",
-    });
+    await sendHumanVoice(sock, jid, voice);
     return;
   }
 
@@ -96,7 +127,7 @@ async function handleMessage(sock, msg) {
   if (text) {
     console.log(`💬 ${userId}: ${text}`);
     const reply = await askBrain(userId, text);
-    await sock.sendMessage(jid, { text: reply });
+    await sendHumanText(sock, jid, reply, text.length);
   }
 }
 

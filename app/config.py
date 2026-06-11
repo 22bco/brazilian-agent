@@ -33,6 +33,11 @@ _PROVIDER_DEFAULTS = {
         "model": "gpt-4o-mini",
         "key_env": "OPENAI_API_KEY",
     },
+    "groq": {
+        "base_url": "https://api.groq.com/openai/v1",
+        "model": "llama-3.3-70b-versatile",  # soporta tool-calling
+        "key_env": "GROQ_API_KEY",
+    },
 }
 
 
