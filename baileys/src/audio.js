@@ -11,19 +11,40 @@ import OpenAI, { toFile } from "openai";
 import { spawn } from "node:child_process";
 import { config, audioEnabled } from "./config.js";
 
-let _client = null;
+// Cliente para TTS de OpenAI (cuando ttsProvider = openai).
+let _openai = null;
 function openai() {
-  if (!_client) _client = new OpenAI({ apiKey: config.openaiApiKey });
-  return _client;
+  if (!_openai) _openai = new OpenAI({ apiKey: config.openaiApiKey });
+  return _openai;
+}
+
+// Cliente STT: OpenAI o Groq (Groq usa el mismo SDK con otra base_url).
+let _stt = null;
+function sttClient() {
+  if (_stt) return _stt;
+  if (config.sttProvider === "groq") {
+    _stt = new OpenAI({
+      apiKey: config.groqApiKey,
+      baseURL: "https://api.groq.com/openai/v1",
+    });
+  } else {
+    _stt = new OpenAI({ apiKey: config.openaiApiKey });
+  }
+  return _stt;
+}
+
+function sttModel() {
+  if (config.sttModel) return config.sttModel;
+  return config.sttProvider === "groq" ? "whisper-large-v3-turbo" : "whisper-1";
 }
 
 // Audio entrante (Buffer ogg/opus de WhatsApp) -> texto.
 export async function transcribe(buffer) {
   if (!audioEnabled) throw new Error("audio desabilitado");
   const file = await toFile(buffer, "audio.ogg", { type: "audio/ogg" });
-  const out = await openai().audio.transcriptions.create({
+  const out = await sttClient().audio.transcriptions.create({
     file,
-    model: config.sttModel,
+    model: sttModel(),
     language: "pt",
   });
   return (out.text || "").trim();

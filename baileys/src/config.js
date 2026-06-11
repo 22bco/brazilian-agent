@@ -14,9 +14,12 @@ export const config = {
   bridgeUrl: process.env.PYTHON_BRIDGE_URL || "http://127.0.0.1:8099",
   bridgeToken: process.env.BRIDGE_TOKEN || "",
 
-  // STT (transcripción del audio entrante): OpenAI Whisper.
+  // STT (escuchar el audio entrante): "openai" (Whisper) o "groq" (Whisper,
+  // OpenAI-compatible, rápido y con free tier). Ambos soportan pt-BR.
+  sttProvider: (process.env.STT_PROVIDER || "openai").toLowerCase(),
   openaiApiKey: process.env.OPENAI_API_KEY || "",
-  sttModel: process.env.STT_MODEL || "whisper-1",
+  groqApiKey: process.env.GROQ_API_KEY || "",
+  sttModel: process.env.STT_MODEL || "", // default según provider (ver audio.js)
 
   // TTS (voz de salida): "elevenlabs" (recomendado, voces pt-BR más naturais) u "openai".
   ttsProvider: (process.env.TTS_PROVIDER || "elevenlabs").toLowerCase(),
@@ -34,7 +37,10 @@ export const config = {
 };
 
 // Para el loop completo de voz hace falta STT (Whisper) y un TTS listo.
-const sttReady = Boolean(config.openaiApiKey);
+const sttReady =
+  config.sttProvider === "groq"
+    ? Boolean(config.groqApiKey)
+    : Boolean(config.openaiApiKey);
 const ttsReady =
   config.ttsProvider === "elevenlabs"
     ? Boolean(config.elevenLabsApiKey && config.elevenLabsVoiceId)

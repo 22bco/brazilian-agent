@@ -99,8 +99,8 @@ Full audio loop for an incoming voice note:
 voice note → Whisper (STT) → text → Python brain → reply text → TTS → voice note
 ```
 
-- **STT** (understanding the audio): OpenAI Whisper, so `OPENAI_API_KEY` is
-  required for voice.
+- **STT** (understanding the audio): Whisper, via **Groq** (default, free tier,
+  no OpenAI billing) or OpenAI (`STT_PROVIDER`). Both handle pt-BR.
 - **TTS** (the reply voice): **ElevenLabs by default** for more natural
   Brazilian-Portuguese voices, with OpenAI TTS as an alternative (`TTS_PROVIDER`).
   ElevenLabs returns mp3, which is transcoded to opus with **ffmpeg** for the
@@ -114,12 +114,14 @@ Relevant env (all in the root `.env`):
 ```
 PYTHON_BRIDGE_URL=http://127.0.0.1:8099
 BRIDGE_TOKEN=                 # optional shared secret with the Python /message
-OPENAI_API_KEY=               # STT (Whisper); required for voice
+STT_PROVIDER=groq             # or "openai"
+GROQ_API_KEY=                 # if STT_PROVIDER=groq (Whisper, free tier)
+OPENAI_API_KEY=               # if STT_PROVIDER=openai (and/or OpenAI TTS)
 TTS_PROVIDER=elevenlabs       # or "openai"
 ELEVENLABS_API_KEY=           # if TTS_PROVIDER=elevenlabs
 ELEVENLABS_VOICE_ID=          # pick a pt-BR voice from your ElevenLabs library
 # ELEVENLABS_MODEL=eleven_multilingual_v2
-# STT_MODEL=whisper-1
+# STT_MODEL=                  # default: whisper-large-v3-turbo (groq) / whisper-1 (openai)
 # TTS_MODEL=gpt-4o-mini-tts   # OpenAI TTS fallback
 # TTS_VOICE=nova
 ```
